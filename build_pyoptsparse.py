@@ -803,7 +803,7 @@ def install_hsl_from_src():
     tar = subprocess.run(['tar', 'vtf', opts['hsl_tar_file']], encoding='UTF-8',
           stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     first_line = tar.stdout.splitlines()[0]
-    hsl_dir_name = first_line.split()[8].replace('/','')
+    hsl_dir_name = first_line.split()[-1].replace('/', '')[1:]
     run_cmd(cmd_list=['tar', 'xf', opts['hsl_tar_file']]) # Extract
     Path(hsl_dir_name).rename('coinhsl') # Rename
 
